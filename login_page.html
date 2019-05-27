@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang = "ja">
+<head>
+	<meta charset = "UTF-8">
+	<meta http-equiv="Pragma" content="no-cache">
+	<meta http-equiv="Cache-Control" content="no-cache">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<script type="text/javascript" src="./src/js/jquery-1.12.1.min.js"></script>
+	<script type="text/javascript" src="./src/js/login.js"></script>
+	<link rel="stylesheet" type="text/css" href="./src/css/login_page.css">
+	<link rel="stylesheet" type="text/css" href="./src/css/page_button_style.css">
+	<title>ログイン</title>
+</head>
+
+<body>
+  <div id="all_page_layout">
+		<div class="change_page_btn">
+			<a href = "../index.html" class="goto_main">メインページへ</a><br>
+			<a href = "./movie_calc.html" class="goto_calc">検索ページへ</a><br>
+			<a href = "./movie_category.html" class="goto_graph">グラフページへ</a><br>
+		</div>
+    <form name="login_form" id="login_form_style">
+				<a id="login_guide">ログイン情報を入力してください<br></a>
+      ユーザ名：<input type="text" id="login_id_text" name="userId" value="ユーザID" onclick="login_form_init_ID()"/><br>
+      パスワード：<input type="password" id="login_pass_text" name="pass" value="パスワード" onclick="login_form_init_PW()"/><br>
+      <div id="login_failed"></div>
+	    <input type="button" id="try_login_btn" value="ログイン" onclick="try_login()"><br>
+    </form>
+  </div>
+</body>
+
+</html>

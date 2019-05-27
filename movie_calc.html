@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="Pragma" content="no-cache">
+		<meta http-equiv="Cache-Control" content="no-cache">
+		<meta name="viewport" content="width=device-width,initial-scale=1">
+		<title>条件から映画を検索</title>
+		<script type="text/javascript" src="./src/js/jquery-1.12.1.min.js"></script>
+		<script type="text/javascript" src="./src/js/jquery-ui.min.js"></script>
+		<link rel="stylesheet" href="./src/css/jquery-ui.css">
+		<link rel="stylesheet" type="text/css" href="./src/css/page_button_style.css">
+		<link rel="stylesheet" type="text/css" href="./src/css/movie_calc.css">
+	</head>
+	<body>
+		<div class="all_page_layout">
+			<div class="change_page_btn">
+				<a href = "../index.html" class="goto_main">メインページへ</a><br>
+				<a href = "./add_movie.php" class="goto_add">データ追記へ</a><br>
+				<a href = "./movie_category.html" class="goto_graph">グラフページへ</a><br>
+			</div>
+			<div class="CalcMenuLayout">
+				<input type="button" id="show_all_style" value="全部" onclick="show_all()"><br>
+				<input type="button" id="total_calc_style" name="TotalCalc" value="各合計" onclick="total_calc()"><br>
+				<input type="button" value="最新10個" id="recent_10_style" onclick="recently_movie_check()">
+				<input type="button" value="最後に見たもの" id="recentest_style" onclick="last_data()"><br>
+				<form name="input_data">
+					<div class="select_value_layout">
+						値段:
+							<select name = "movie_value" class = "select_box_style">
+								<option value="">レイトショー(TOHO)</option>
+								<option value="">レイトショー(横浜ブルク13)</option>
+								<option value="">無料鑑賞</option>
+								<option value="">ファーストデイ</option>
+								<option value="">映画の日</option>
+								<option value="">特殊価格(リバイバル,短編他)</option>
+								<option value="">MX4D</option>
+								<option value="">通常価格</option>
+								<option value="">IMAX</option>
+								<option value="">その他</option>
+							</select>
+							<input type="button" value="価格別" class="select_box_btn" onclick="search_value()">
+						<br>
+					</div>
+				評価:
+					<select name="point" class="select_box_style" id="select_box_point" onchange = "set_point_index()">
+						<option value ="">1</option>
+						<option value ="">1.5</option>
+						<option value ="">2</option>
+						<option value ="">2.5</option>
+						<option value ="">3</option>
+						<option value ="">3.5</option>
+						<option value ="">4</option>
+						<option value ="">4.5</option>
+						<option value ="">5</option>
+					</select>
+					<input type="button" id="PointBtn" class="select_box_btn" name="PointBtn" value="評価別" onclick="sort_point()"><br>
+				カテゴリ:
+					<select name="Category" class="select_box_style" id="select_box_category">
+						<option value="">アクション</option>
+						<option value="">アメコミ</option>
+						<option value="">アニメ</option>
+						<option value="">ミュージカル</option>
+						<option value="">ラブロマンス</option>
+						<option value="">ミステリー・心理</option>
+						<option value="">サスペンス</option>
+						<option value="">歴史</option>
+						<option value="">SF</option>
+						<option value="">犯罪(クライム)</option>
+						<option value="">ホラー・スリル</option>
+						<option value="">ファンタジー</option>
+						<option value="">コメディ</option>
+						<option value="">伝記</option>
+					</select>
+					<input type="button" id="CategoryBtn"  class="select_box_btn" name="CategoryBtn" value="カテゴリ別" onclick="sort_category()"><br>
+				</form>
+				<form name="text_form">
+					<!---
+					<textarea readonly name="outText" id="result_area" rows="15">テキストエリアを変更する</textarea>
+					--->
+					<h1 id="result_area" name="out_text">結果表示</h1>
+				</form>
+				<div id="calc_all_dialog">
+					<h1 id="all_dialog_result"> </h1>
+				</div>
+				<div id="page_top">
+					▲
+				</div>
+				<div id="bottom_padding">
+
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript" src="./src/js/movie_func.js"></script>
+	</body>
+</html>

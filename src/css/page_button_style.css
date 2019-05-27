@@ -1,0 +1,94 @@
+
+/* ページ遷移のボタンの配置調整 */
+.change_page_btn{
+	text-align: center;
+	padding: 0.5em 0;
+	border-top: solid 3px #CCCCCC;
+	border-bottom: solid 3px #CCCCCC;
+}
+
+/* メインページへのボタン */
+.goto_main{
+	margin: auto;
+	margin-top: 10px;
+	display: inline-block;
+	text-decoration: none;
+	vertical-align: middle;
+	background-color: pink;
+	width: 40%;
+	height: 20px;
+	box-shadow: 0 1px 5px #333333;
+}
+
+.goto_main:active{
+	box-shadow: 0 0 1px #666666;
+	position: relative;
+	top: 1px;
+}
+
+/* 集計ページへのボタン装飾 */
+.goto_calc{
+	
+	margin: auto;
+	margin-top: 10px;
+	display: inline-block;
+	text-decoration: none;	/*下線消す*/
+	text-align: center;
+	vertical-align: middle;
+	background-color: #9999DD;
+	width: 40%;
+	height: 20px;
+	box-shadow: 0 1px 5px #333333;
+	
+}
+
+.goto_calc:active{
+
+	box-shadow: 0 0 1px #666666;
+	position: relative;
+	top: 1px;
+}
+
+/* 追記ページの装飾 */
+.goto_add{
+	
+	margin: auto;
+	margin-top: 10px;
+	display: inline-block;
+	text-decoration: none;	/*下線消す*/
+	text-align: center;
+	background-color: #F39800;
+	width: 40%;
+	height: 20px;
+	box-shadow: 0 1px 5px #333;
+	
+}
+
+.goto_add:active{
+
+	box-shadow: 0 0 1px #666;
+	position: relative;
+	top: 1px;
+}
+
+
+/* グラフページへの装飾 */
+.goto_graph{
+	margin: auto;
+	margin-top: 10px;
+	display: inline-block;
+	text-decoration: none;	/*下線消す*/
+	text-align: center;
+	background-color: #AFDBAF;
+	width: 40%;
+	height: 20px;
+	box-shadow: 0 1px 5px #333;
+}
+
+.goto_graph:active{
+	box-shadow: 0 0 1px #666;
+	position: relative;
+	top: 1px;
+}
+
+

@@ -1,0 +1,87 @@
+
+body{
+	background-color: #F5F5F5;
+	font-size: 3vw;
+}
+
+.all_page_layout{
+	text-align: center;
+	margin: auto;
+}
+
+.title_str{
+	text-align: center;
+	padding: 0.5em 0;
+	border-top: solid 3px #CCC;
+	border-bottom: solid 3px #CCC;
+}
+
+.DIY_main{
+	text-align: center;
+}
+
+.goto_github{
+	margin-top: 10px;
+	width: 10vw;
+	height: 10%;
+}
+
+.goto_github:active{
+	box-shadow: 0 0 1px #666666;
+	position: relative;
+	top: 1px;
+}
+
+.goto_movie{
+	margin: auto;
+	margin-top: 10px;
+	display: inline-block;
+	text-decoration: none;
+	vertical-align: middle;
+	background-color: pink;
+	width: 40%;
+	height: 5vh;
+	box-shadow: 0 1px 5px #333333;
+}
+
+.goto_movie:active{
+	box-shadow: 0 0 1px #666666;
+	position: relative;
+	top: 1px;
+}
+
+.goto_castle{
+	margin: auto;
+	margin-top: 10px;
+	display: inline-block;
+	text-decoration: none;
+	vertical-align: middle;
+	background-color: pink;
+	width: 40%;
+	height: 5vh;
+	box-shadow: 0 1px 5px #333333;
+}
+
+.goto_castle:active{
+	box-shadow: 0 0 1px #666666;
+	position: relative;
+	top: 1px;
+}
+
+.goto_idiom{
+	margin: auto;
+	margin-top: 10px;
+	display: inline-block;
+	text-decoration: none;
+	vertical-align: middle;
+	background-color: pink;
+	width: 40%;
+	height: 5vh;
+	box-shadow: 0 1px 5px #333333;
+}
+
+.goto_idiom:active{
+	box-shadow: 0 0 1px #666666;
+	position: relative;
+	top: 1px;
+}

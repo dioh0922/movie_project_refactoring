@@ -1,0 +1,20 @@
+
+body{
+	background-color: #F5F5F5;
+}
+
+.allPageLayout{
+	text-align: center;
+	margin: auto;
+}
+
+#chart_container{
+	position: relative;
+	width: 100vw;
+	height: 80vh;
+}
+
+#myChart{
+	margin-top: 20px;
+	margin-bottom: 20px;
+}

@@ -1,0 +1,15 @@
+
+body{
+	background-color: #DDDDDD;
+}
+
+/* 全体のページの配置調整 */
+.all_page_layout{
+	margin: auto;
+	text-align: center;
+}
+
+#close_page{
+	font-size: 20px;
+	font-weight: bold;
+}

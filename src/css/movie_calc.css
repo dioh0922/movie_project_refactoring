@@ -1,0 +1,129 @@
+
+body{
+	background-color: #F5F5F5;
+}
+
+/* セレクトボックス初期化 */
+select{
+	-webkit-apparance: none;
+	-moz-appearance: none;
+	appearance: none;
+}
+
+select::-ms-expand{
+	display: none;
+}
+
+/* 全体のページの配置調整 */
+.all_page_layout{
+	margin: auto;
+	text-align: center;
+}
+
+/* 全データ表示ボタンの装飾 */
+#show_all_style{
+	width: 50%;
+	color: #FFFFFF;
+	background-color: #FF4444;
+}
+
+#show_all_style:active{
+	color: #FFFFFF;
+	background-color: #FF7777;
+}
+
+/* 各合計計算ボタンの装飾 */
+#total_calc_style{
+	width: 50%;
+	color: #FFFFFF;
+	background-color: #228822;
+}
+
+#total_calc_style:active{
+	color: #FFFFFF;
+	background-color: #779977;
+}
+
+/* 最新10個のボタンの装飾 */
+#recent_10_style{
+	width: 20%;
+	color: #FFFFFF;
+	background-color: #4444FF;
+}
+
+#recent_10_style:active{
+	color: #FFFFFF;
+	background-color: #7777FF;
+}
+
+/* 一番最新のボタンの装飾 */
+#recentest_style{
+	width: 30%;
+	color: #FFFFFF;
+	background-color: #4444FF;
+}
+
+#recentest_style:active{
+	color: #FFFFFF;
+	background-color: #7777FF;
+}
+
+/* 値段抽出のセレクトボックスとボタン */
+.select_value_layout{
+	margin-top: 10px;
+}
+
+/* セレクトボックスのスタイルの装飾 */
+.select_box_style{
+	text-align: center;
+	background-color: #15153e;
+	color: #FFFFFF;
+	border: 1px solid #000000;
+	border-radius: 50px;
+}
+
+/* 評価度のセレクトボックスの調整 */
+#select_box_point{
+	text-align: center;
+	width: 20%;
+}
+
+#select_box_category{
+	text-align: center;
+	width: 20%;
+}
+
+/* セレクトボックス選択系のボタン調整 */
+.select_box_btn{
+	color: #FFFFFF;
+	background-color: #15153E;
+}
+
+#result_area{
+	margin:	auto;
+	margin-bottom:40px;
+	background-color: #DDDDDD;
+	font-size:	18px;
+	width: 80%;
+}
+
+#all_dialog_result{
+	font-size:	16px;
+}
+
+/* スクロールトップ */
+#page_top{
+	position: fixed;
+	right: 15px;
+	bottom: 100px;
+	cusor: pointer;
+	display: inline-box;
+	background-color: #D0D0FF;
+}
+
+/* 画面下部に余白 */
+#bottom_padding{
+	height:	30px;
+	padding: 0.5em 0;
+	border-top: solid 3px #CCCCCC;
+}

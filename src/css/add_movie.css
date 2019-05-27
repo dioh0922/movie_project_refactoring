@@ -1,0 +1,183 @@
+
+body{
+	background-color: #DDDDDD;
+}
+
+/* 全体のページの配置調整 */
+.all_page_layout{
+	margin: auto;
+	text-align: center;
+}
+
+.input_data_layout{
+	margin-top: 10px;
+	text-align:center;
+}
+
+.referance_website{
+	text-align: right;
+}
+
+/* 値段選択のボタンの装飾 */
+.value_select_btn_style{
+	background-color: #D0D0FF;
+}
+
+/* 値段入力欄の装飾 */
+#value_textbox{
+	width:	40%;
+	background-color: #D0D0FF;
+}
+
+/* タイトル入力欄の装飾 */
+#title_textbox{
+	background-color: #D0FFFF;
+	width: 40%;
+	height: 25px;
+}
+
+/* 「タイトル:」の装飾 */
+#input_guide_title{
+	height: 25px;
+	display: inline-block;
+	text-align: center;
+	background-color: #D0FFFF;
+}
+
+/* 上映時間入力の装飾 */
+#ScrTime_textbox{
+	background-color:	#D0FFD0;
+	width:	40%;
+	height:	25px;
+}
+
+/* 「上映時間：」の装飾 */
+#input_guide_ScrTime{
+	height:	25px;
+	display: inline-block;
+	text-align:	center;
+	background-color:	#D0FFD0;
+}
+
+/* 日時入力の装飾 */
+#date_textbox{
+	background-color:	#FAB565;
+	width:	40%;
+	height:	25px;
+}
+
+/* 「日時：」の装飾 */
+#input_guide_date{
+	height:	25px;
+	display: inline-block;
+	text-align:	center;
+	background-color:	#FAB565;
+}
+
+/* 「値段：」の装飾 */
+#input_guide_value{
+	height:	25px;
+	display inline-block;
+	text-align:	center;
+	background-color:	#D0D0FF;
+}
+
+/* 「評価：」の装飾 */
+#input_guide_point{
+	height:	25px;
+	display: inline-block;
+	text-align:	center;
+	background-color:	#FFFF4D;
+}
+
+/* 評価入力ボックスの装飾 */
+#point_selectbox{
+	background-color:	#FFFF4D;
+	width:	40%;
+	height:	25px;
+	border:	1px solid #000000;
+	border-radius:	50px;
+}
+
+/* 「カテゴリ：」の装飾 */
+#input_guide_category{
+	height: 25px;
+	display: inline-block;
+	text-align: center;
+	background-color: #FFFFFF;
+}
+
+/*  */
+#category_selectbox{
+	width: 40%;
+	height: 25px;
+	border: 1px solid #000000;
+	border-radius:	50px;
+}
+
+/* 追加ボタンの装飾 */
+#confirm_add_data_btn{
+	margin-top: 20px;
+	font-size: 25px;
+	font-weight: 600;
+	text-align: center;
+	width: 80%;
+	height: 40px;
+	display: inline-block;
+	background-color: #CC5555;
+	color: #FFFFFF;
+}
+
+/* 外部サイトへのボタンの装飾 */
+#refer_site_btn{
+	margin: auto;
+	margin-top: 10px;
+	display: inline-block;
+	text-decoration: none;	/*下線消す*/
+	text-align: center;
+	vertical-align: middle;
+	background-color: #9999DD;
+	width: 20%;
+	height: 20px;
+	box-shadow: 0 1px 5px #333333;
+}
+
+#refer_site_btn:active{
+	box-shadow: 0 0 1px #666666;
+	position: relative;
+	top: 1px;
+}
+
+
+#refer_site_txt{
+	color: #5800D0;
+	font-size: 16px;
+}
+
+.admin_form{
+	margin-top:	50px;
+	margin-bottom: 20px;
+}
+
+/* テスト用ボタンの装飾 */
+.admin_btn{
+	background-color:	#000000;
+	color: #FFFF00;
+	font-weight:	600;
+}
+
+/* 画面下部に余白 */
+#button_padding{
+	height:	30px;
+	padding: 0.5em 0;
+	border-top: solid 3px #CCCCCC;
+}
+
+@media screen and (max-width: 500px){
+	#refer_site_txt{
+		//画面幅が狭い場合、外部サイトへのリンク文字サイズを半分にする
+		color: #5800D0;
+		font-size: 0.5em;
+	}
+}
+

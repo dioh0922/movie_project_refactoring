@@ -1,0 +1,34 @@
+
+body{
+	background-color: #DDDDDD;
+}
+
+/* 全体のページの配置調整 */
+.all_page_layout{
+	margin: auto;
+	text-align: center;
+}
+
+#login_form_style{
+	text-align: center;
+}
+
+#login_id_text{
+	width: 20%;
+}
+
+#login_pass_text{
+	width: 20%;
+}
+
+#try_login_btn{
+	width: 40%;
+	text-align: center;
+	color: #FFFFFF;
+	background-color: #660000;
+}
+
+#login_guide{
+	margin: auto;
+	text-align: center;
+}
