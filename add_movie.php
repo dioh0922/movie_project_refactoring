@@ -80,6 +80,8 @@ if(!isset($_SESSION["login_user"])){
 					<option value="">ホラー・スリル</option>
 					<option value="">ファンタジー</option>
 					<option value="">コメディ</option>
+					<option value="">伝記</option>
+					<option value="">パニック</option>
 				</select>
 			</form>
 
