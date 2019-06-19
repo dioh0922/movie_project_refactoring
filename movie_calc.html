@@ -67,21 +67,9 @@
 					<input type="button" id="PointBtn" class="select_box_btn" name="PointBtn" value="評価別" onclick="sort_point()"><br>
 				カテゴリ:
 					<select name="Category" class="select_box_style" id="select_box_category">
-						<option value="">アクション</option>
-						<option value="">アメコミ</option>
-						<option value="">アニメ</option>
-						<option value="">ミュージカル</option>
-						<option value="">ラブロマンス</option>
-						<option value="">ミステリー・心理</option>
-						<option value="">サスペンス</option>
-						<option value="">歴史</option>
-						<option value="">SF</option>
-						<option value="">犯罪(クライム)</option>
-						<option value="">ホラー・スリル</option>
-						<option value="">ファンタジー</option>
-						<option value="">コメディ</option>
-						<option value="">伝記</option>
-						<option value="">パニック</option>
+						<option v-for="(value, key) in sel_items">
+							{{value}}
+						</option>
 					</select>
 					<input type="button" id="CategoryBtn"  class="select_box_btn" name="CategoryBtn" value="カテゴリ別" onclick="sort_category()"><br>
 				</form>

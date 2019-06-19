@@ -41,6 +41,24 @@ const value_data = 	[	1300, 		//TOHOのレイト料金
 						9999		//未定義
 					];
 
+const category_list = [
+				"アクション",
+				"アメコミ",
+				"アニメ",
+				"ミュージカル",
+				"ラブロマンス",
+				"ミステリー・心理",
+				"サスペンス",
+				"歴史",
+				"SF",
+				"犯罪(クライム)",
+				"ホラー・スリル",
+				"ファンタジー",
+				"コメディ",
+				"伝記",
+				"パニック"
+			];
+
 //起動時の処理
 (window.onload = function(){
 	func_result.innerHTML = "DBから抽出結果を表示する";
@@ -61,7 +79,7 @@ $(function(){
 			$("#page_top").slideUp(600);
 		}
 	});
-
+	category_select_control.sel_items = category_list;
 });
 
 //選択した評価度を探して表示する
@@ -86,6 +104,13 @@ var dialog_control = new Vue({
 		dialog_total_time: "",
 		dialog_total_value: "",
 		dialog_total_count: "",
+	}
+});
+
+var category_select_control = new Vue({
+	el: "#select_box_category",
+	data: {
+		sel_items: category_list,
 	}
 });
 
