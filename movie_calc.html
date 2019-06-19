@@ -53,7 +53,7 @@
 						<br>
 					</div>
 				評価:
-					<select name="point" class="select_box_style" id="select_box_point" onchange = "set_point_index()">
+					<select name="point" class="select_box_style" id="select_box_point">
 						<option value ="">1</option>
 						<option value ="">1.5</option>
 						<option value ="">2</option>
@@ -86,13 +86,16 @@
 					<input type="button" id="CategoryBtn"  class="select_box_btn" name="CategoryBtn" value="カテゴリ別" onclick="sort_category()"><br>
 				</form>
 				<form name="text_form">
-					<!---
-					<textarea readonly name="outText" id="result_area" rows="15">テキストエリアを変更する</textarea>
-					--->
 					<h1 id="result_area" name="out_text">結果表示</h1>
 				</form>
 				<div id="calc_all_dialog">
-					<h1 id="all_dialog_result"> </h1>
+					<div id="all_dialog_result">
+						<h1>
+							{{dialog_total_time}}<br>
+							{{dialog_total_value}}<br>
+							{{dialog_total_count}}<br>
+						</h1>
+					</div>
 				</div>
 				<div id="page_top">
 					▲

@@ -64,11 +64,6 @@ $(function(){
 
 });
 
-//評価度リスト選択時処理
-function set_point_index(){
-
-}
-
 //選択した評価度を探して表示する
 //「評価別」
 function sort_point(){
@@ -85,6 +80,15 @@ function sort_point(){
 	POST_query(send_data, disp_PHP);
 }
 
+var dialog_control = new Vue({
+	el: "#all_dialog_result",
+	data: {
+		dialog_total_time: "",
+		dialog_total_value: "",
+		dialog_total_count: "",
+	}
+});
+
 //総時間と総金額を計算して表示する関数
 //「各合計」
 function total_calc(){
@@ -93,19 +97,22 @@ function total_calc(){
 
 	let alert_word = "";
 
-	let dialog_str = document.getElementById("all_dialog_result");
-	dialog_str.innerHTML = "";
-
 	$.ajax({
 		type:"GET",
 		url:svr_domain + "/src/php/calc_total.php",
 		cacha:false,
 	})
 	.done(function(get_data){
-		dialog_str.innerHTML = get_data;
+		//<br>ごとに各結果が送られてくるため分ける
+		let dialog_result_arr = get_data.split("<br>");
+		dialog_control.dialog_total_time = dialog_result_arr[0];
+		dialog_control.dialog_total_value = dialog_result_arr[1];
+		dialog_control.dialog_total_count = dialog_result_arr[2];
 	})
 	.fail(function(){
-		dialog_str.innerHTML = "通信に失敗しました\n";
+		dialog_control.dialog_total_time = "通信に失敗しました\n";
+		dialog_control.dialog_total_value = "";
+		dialog_control.dialog_total_count = "";
 	})
 	.always(function(){
 		//jqueryUIでダイアログ表示する
