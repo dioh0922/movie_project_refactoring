@@ -37,17 +37,10 @@
 				<form name="input_data">
 					<div class="select_value_layout">
 						値段:
-							<select name = "movie_value" class = "select_box_style">
-								<option value="">レイトショー(TOHO)</option>
-								<option value="">レイトショー(横浜ブルク13)</option>
-								<option value="">無料鑑賞</option>
-								<option value="">ファーストデイ</option>
-								<option value="">映画の日</option>
-								<option value="">特殊価格(リバイバル,短編他)</option>
-								<option value="">MX4D</option>
-								<option value="">通常価格</option>
-								<option value="">IMAX</option>
-								<option value="">その他</option>
+							<select name = "movie_value" class = "select_box_style" id="value_select_box">
+								<option v-for="(value, key) in sel_items">
+									{{value}}
+								</option>
 							</select>
 							<input type="button" value="価格別" class="select_box_btn" onclick="search_value()">
 						<br>
