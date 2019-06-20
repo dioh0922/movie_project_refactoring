@@ -54,15 +54,9 @@
 					</div>
 				評価:
 					<select name="point" class="select_box_style" id="select_box_point">
-						<option value ="">1</option>
-						<option value ="">1.5</option>
-						<option value ="">2</option>
-						<option value ="">2.5</option>
-						<option value ="">3</option>
-						<option value ="">3.5</option>
-						<option value ="">4</option>
-						<option value ="">4.5</option>
-						<option value ="">5</option>
+						<option v-for="(value, key) in sel_items">
+							{{value}}
+						</option>
 					</select>
 					<input type="button" id="PointBtn" class="select_box_btn" name="PointBtn" value="評価別" onclick="sort_point()"><br>
 				カテゴリ:

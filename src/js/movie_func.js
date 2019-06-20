@@ -16,17 +16,6 @@ const json_addr = "http://dioh09.php.xdomain.jp/MovieData.json";	//phpサーバ�
 //const svr_domain = "http://dioh09.php.xdomain.jp";
 const svr_domain = "http://localhost/movie_project";
 
-const movie_point = [	'1',
-						'1.5',
-						'2',
-						'2.5',
-						'3',
-						'3.5',
-						'4',
-						'4.5',
-						'5'
-					];
-
 const MX4D_value = 3300;	//MX4D系の判断に使用
 
 const value_data = 	[	1300, 		//TOHOのレイト料金
@@ -40,31 +29,11 @@ const value_data = 	[	1300, 		//TOHOのレイト料金
 						2200,		//IMAXの料金
 						9999		//未定義
 					];
-/*
-const category_list = [
-				"アクション",
-				"アメコミ",
-				"アニメ",
-				"ミュージカル",
-				"ラブロマンス",
-				"ミステリー・心理",
-				"サスペンス",
-				"歴史",
-				"SF",
-				"犯罪(クライム)",
-				"ホラー・スリル",
-				"ファンタジー",
-				"コメディ",
-				"伝記",
-				"パニック"
-			];
-*/
 
 //起動時の処理
 (window.onload = function(){
 	func_result.innerHTML = "DBから抽出結果を表示する";
 	$("#page_top").hide();
-		//category_select_control.sel_items = category_list;
 });
 
 $(function(){
@@ -91,7 +60,7 @@ function sort_point(){
 
 	let send_data = {};
 	send_data["kind"] = "Point";
-	send_data["point"] = movie_point[idx];
+	send_data["point"] = point_select_control.sel_items[idx];
 
 	let disp_PHP = svr_domain + "/src/php/show_detail.php";
 
@@ -99,6 +68,7 @@ function sort_point(){
 	POST_query(send_data, disp_PHP);
 }
 
+//合計のダイアログ内容の操作用オブジェクト
 var dialog_control = new Vue({
 	el: "#all_dialog_result",
 	data: {
@@ -107,16 +77,6 @@ var dialog_control = new Vue({
 		dialog_total_count: "",
 	}
 });
-
-/*
-var category_select_control = new Vue({
-	el: "#select_box_category",
-	data: {
-		sel_items: category_list,
-	}
-});
-*/
-
 
 //総時間と総金額を計算して表示する関数
 //「各合計」
