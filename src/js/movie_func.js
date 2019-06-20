@@ -40,7 +40,7 @@ const value_data = 	[	1300, 		//TOHOのレイト料金
 						2200,		//IMAXの料金
 						9999		//未定義
 					];
-
+/*
 const category_list = [
 				"アクション",
 				"アメコミ",
@@ -58,11 +58,13 @@ const category_list = [
 				"伝記",
 				"パニック"
 			];
+*/
 
 //起動時の処理
 (window.onload = function(){
 	func_result.innerHTML = "DBから抽出結果を表示する";
 	$("#page_top").hide();
+		//category_select_control.sel_items = category_list;
 });
 
 $(function(){
@@ -79,7 +81,6 @@ $(function(){
 			$("#page_top").slideUp(600);
 		}
 	});
-	category_select_control.sel_items = category_list;
 });
 
 //選択した評価度を探して表示する
@@ -107,12 +108,15 @@ var dialog_control = new Vue({
 	}
 });
 
+/*
 var category_select_control = new Vue({
 	el: "#select_box_category",
 	data: {
 		sel_items: category_list,
 	}
 });
+*/
+
 
 //総時間と総金額を計算して表示する関数
 //「各合計」
