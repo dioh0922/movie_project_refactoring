@@ -100,15 +100,25 @@ select::-ms-expand{
 }
 
 #result_area{
-	margin:	auto;
-	margin-bottom:40px;
-	background-color: #DDDDDD;
+	margin: auto;
 	font-size:	18px;
+}
+
+#result_text_area{
+	padding-top: 10px;
+	padding-bottom: 10px;
+	margin:auto;
+	background-color: #DDDDDD;
 	width: 80%;
 }
 
-#all_dialog_result{
-	font-size:	16px;
+#all_text_area{
+	padding-bottom: 10px;
+}
+
+#calc_all_dialog{
+	font-size: 18px;
+	padding-top: 10px;
 }
 
 /* スクロールトップ */

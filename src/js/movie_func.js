@@ -4,13 +4,7 @@ var json_text;
 var data;
 var special = "";
 
-//各ボタンの結果を表示する
-var	func_result = document.getElementById("result_area");
-
-var form = document.forms.text_form;	//結果表示のテキストエリア指定
-
 var movie_data;
-const json_addr = "http://dioh09.php.xdomain.jp/MovieData.json";	//phpサーバ上のjson そのままだとjQueryで取れない
 
 //アクセスするサーバ名称
 //const svr_domain = "http://dioh09.php.xdomain.jp";
@@ -32,7 +26,6 @@ const value_data = 	[	1300, 		//TOHOのレイト料金
 
 //起動時の処理
 (window.onload = function(){
-	func_result.innerHTML = "DBから抽出結果を表示する";
 	$("#page_top").hide();
 });
 
@@ -68,23 +61,12 @@ function sort_point(){
 	POST_query(send_data, disp_PHP);
 }
 
-//合計のダイアログ内容の操作用オブジェクト
-var dialog_control = new Vue({
-	el: "#all_dialog_result",
-	data: {
-		dialog_total_time: "",
-		dialog_total_value: "",
-		dialog_total_count: "",
-	}
-});
-
 //総時間と総金額を計算して表示する関数
 //「各合計」
 function total_calc(){
 	let total_time = 0;
 	let total_money = 0;
-
-	let alert_word = "";
+	let dialog_result_arr = [];
 
 	$.ajax({
 		type:"GET",
@@ -92,34 +74,26 @@ function total_calc(){
 		cacha:false,
 	})
 	.done(function(get_data){
-		//<br>ごとに各結果が送られてくるため分ける
-		let dialog_result_arr = get_data.split("<br>");
-		dialog_control.dialog_total_time = dialog_result_arr[0];
-		dialog_control.dialog_total_value = dialog_result_arr[1];
-		dialog_control.dialog_total_count = dialog_result_arr[2];
+		dialog_result_arr = get_data;
 	})
 	.fail(function(){
-		dialog_control.dialog_total_time = "通信に失敗しました\n";
-		dialog_control.dialog_total_value = "";
-		dialog_control.dialog_total_count = "";
+		dialog_result_arr = "通信に失敗しました";
 	})
 	.always(function(){
 		//jqueryUIでダイアログ表示する
-		$("#calc_all_dialog").dialog({
-			modal:	true,
-			title:	"総計",
-			autoOpen:	true,
-
+		var str = $("<div></div>").dialog({autoOpen: true});
+		str.html('<h1 id="calc_all_dialog">'+dialog_result_arr+'</h1>');
+		str.dialog("option", {
+			title: "総計",
 			buttons:	{
 				"閉じる":	function(){
 					$(this).dialog("close");
 				}
 			}
 		});
+		str.dialog("open");
 	});
-
 }
-
 //10件を日付の新しい順に表示する
 //「最新１０個」
 function recently_movie_check(){
@@ -177,7 +151,9 @@ function request_PHP_result(url){
 		cacha:false
 	})
 	.done(function(ajax_data){
-		func_result.innerHTML = ajax_data;
+		//func_result.innerHTML = ajax_data;
+		let data_arr = ajax_data.split("<br>");
+		text_area_control.text = data_arr;
 	})
 	.fail(function(){
 		alert("PHPへの通信が失敗しました。");
@@ -193,7 +169,9 @@ function POST_query(query_str, url){
 			data: query_str
 		})
 		.done(function(ajax_data){
-			func_result.innerHTML = ajax_data;
+			//func_result.innerHTML = ajax_data;
+			let data_arr = ajax_data.split("<br>");
+			text_area_control.text = data_arr;
 		})
 		.fail(function(){
 			alert("POSTで通信が失敗");
