@@ -4,7 +4,7 @@ function db_connect($query){
 	mb_language("ja");
 	mb_internal_encoding("UTF-8");
 
-	$json_name = "setup.json";
+	$json_name = "../setup.json";
 	if(file_exists($json_name)){
 		$setup_data = file_get_contents($json_name);
 		$setup_data_arr = json_decode($setup_data, true);

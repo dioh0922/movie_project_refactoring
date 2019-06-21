@@ -6,9 +6,7 @@ var special = "";
 
 var movie_data;
 
-//アクセスするサーバ名称
-//const svr_domain = "http://dioh09.php.xdomain.jp";
-const svr_domain = "http://localhost/movie_project";
+var svr_domain = "";	//アクセスするサーバ名称
 
 const MX4D_value = 3300;	//MX4D系の判断に使用
 
@@ -27,6 +25,9 @@ const value_data = 	[	1300, 		//TOHOのレイト料金
 //起動時の処理
 (window.onload = function(){
 	$("#page_top").hide();
+	$.getJSON("/movie_project/src/setup.json", function(data){
+		svr_domain = data["domain"];
+	});
 });
 
 $(function(){
@@ -94,6 +95,7 @@ function total_calc(){
 		str.dialog("open");
 	});
 }
+
 //10件を日付の新しい順に表示する
 //「最新１０個」
 function recently_movie_check(){
