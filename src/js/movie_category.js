@@ -10,9 +10,7 @@ var avg_point_arr = [];
 
 
 //アクセスするサーバ名称
-//const svr_domain = "http://dioh09.php.xdomain.jp";
-const svr_domain = "http://localhost/movie_project";
-
+var svr_domain = "";
 //グラフ表示処理
 function graph_display(){
 
@@ -157,7 +155,10 @@ $(window).on("ready_display", graph_display);
 
 //起動時の処理
 (window.onload = function(){
-	get_category_data();
-	get_category_table();
-	get_avg_point();
+	$.getJSON("/movie_project/src/setup.json", function(data){
+		svr_domain = data["domain"];
+		get_category_data();
+		get_category_table();
+		get_avg_point();
+	});
 });

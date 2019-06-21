@@ -5,8 +5,7 @@ var alert_text;
 const json_addr = "http://dioh09.php.xdomain.jp/MovieData.json";	//phpサーバ上のjson
 
 //アクセスするサーバ名称
-//const svr_domain = "http://dioh09.php.xdomain.jp";
-const svr_domain = "http://localhost/movie_project";
+var svr_domain = "";
 
 function try_login(){
 	var user_data = {};
@@ -41,3 +40,9 @@ function login_form_init_PW(){
 function login_form_init_ID(){
 	document.login_form.userId.value = "";
 }
+
+(window.onload = function(){
+	$.getJSON("/movie_project/src/setup.json", function(data){
+		svr_domain = data["domain"];
+	});
+});

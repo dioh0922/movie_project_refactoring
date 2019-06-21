@@ -5,8 +5,7 @@ var alert_text;
 const json_addr = "http://dioh09.php.xdomain.jp/MovieData.json";	//phpサーバ上のjson
 
 //アクセスするサーバ名称
-//const svr_domain = "http://dioh09.php.xdomain.jp";
-const svr_domain = "http://localhost/movie_project";
+var svr_domain = "";
 
 const movie_point = [	'1',
 						'1.5',
@@ -104,45 +103,6 @@ function json_all_cnv_db(){
 	cnf_result = confirm("jsonファイルを全てデータベースに登録します");
 
 	if(cnf_result){
-
-		$.getJSON(json_addr)
-		.done(function(json_data){
-			movie_data = json_data;
-			let i = 0;
-			movie_data.forEach(function(val){
-				i++;
-
-				//クエリでphpに送信 -> DBに投げる
-				$.ajax({
-					type:"POST",
-					url:svr_domain + "/src/php/add_movie_data.php",
-					cacha:false,
-					data:val
-				})
-				.done(function(){
-					//成功時処理
-				})
-				.fail(function(){
-					alert("通信が失敗");
-				});
-
-				//結果待ってから次送るようにする(エラー返るとおかしくなることがある)
-				let str_sec = new Date();
-
-				//開始時刻から現在時刻の差が200msec未満なら待つ
-				while(new Date() - str_sec < 200){
-					;
-				}
-
-			});
-
-		})
-		.fail(function(){
-			alert_dialog_open("jsonファイルの読み込みに失敗しました");
-		})
-		.always(function(){
-
-		});
 	}
 }
 
@@ -245,4 +205,7 @@ function all_data_save_json(){
 (window.onload = function(){
 	//結果表示用のダイアログに結果(主に失敗)を表示できるようにする
 	alert_text = document.getElementById("alert_dlg_txt");
+	$.getJSON("/movie_project/src/setup.json", function(data){
+		svr_domain = data["domain"];
+	});
 });
