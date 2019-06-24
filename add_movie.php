@@ -20,9 +20,17 @@ if(!isset($_SESSION["login_user"])){
 	<meta http-equiv="Pragma" content="no-cache">
 	<meta http-equiv="Cache-Control" content="no-cache">
 	<meta name="viewport" content="width=device-width,initial-scale=1">
-	<script type="text/javascript" src="./src/js/jquery-1.12.1.min.js"></script>
-	<script type="text/javascript" src="./src/js/jquery-ui.min.js"></script>
-	<link rel="stylesheet" href="./src/css/jquery-ui.css">
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+	<script
+		src="https://code.jquery.com/jquery-3.4.1.js"
+		integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+		crossorigin="anonymous">
+	</script>
+	<script
+		src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+		crossorigin="anonymous">
+	</script>
+	<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
 	<link rel="stylesheet" type="text/css" href="./src/css/page_button_style.css">
 	<link rel="stylesheet" type="text/css" href="./src/css/add_movie.css">
 	<title>データベースに映画情報を入力</title>
@@ -41,48 +49,35 @@ if(!isset($_SESSION["login_user"])){
 			<a id="input_guide_title">タイトル名：</a><input type="text" name="title" id="title_textbox" value="タイトルを入力" onclick="add_movie_title_form_on_select()"/><br>
 			<a id="input_guide_ScrTime">上映時間：</a><input type="number" id="ScrTime_textbox" name="scrTime" value="1"/><br>
 			<a id="input_guide_date">日時：</a><input type="date" id="date_textbox" name="date"><br>
-			<a id="input_guide_value">値段：</a><input type="number" name="value" id="value_textbox" value="0"/><br>
-			<input type="button" value="TOHOシネマズ レイト" class="value_select_btn_style" onclick="TOHO_night()"/>
-			<input type="button" value="横浜ブルク13 レイト" class="value_select_btn_style" onclick="KINEZO_night()"/>
-			<input type="button" value="通常料金" class="value_select_btn_style" onclick="normal_value()"/>
-			<input type="button" value="TOHO 無料鑑賞" class="value_select_btn_style" onclick="TOHO_spend_point()"/>
-			<input type="button" value="TOHO サービスデー" class="value_select_btn_style" onclick="TOHO_service()"/>
+			<a id="input_guide_value">値段：</a>
+<!---			<input type="number" name="value" id="value_textbox" value="0"/><br>
+
+--->
+			<input type="text" id="value_textbox" v-model="text"></br>
+			<select name = "movie_value" class="select_box_style"
+			id="select_box_value"
+			v-on:change="selected"
+			v-model="sel_idx">
+				<option v-for="(value, key) in sel_items">
+					{{value}}
+				</option>
+			</select>
 
 			<br/>
 
 			<a id="input_guide_point">評価：</a>
-				<select name="Point" id="point_selectbox">
-					<option value ="">1</option>
-					<option value ="">1.5</option>
-					<option value ="">2</option>
-					<option value ="">2.5</option>
-					<option value ="">3</option>
-					<option value ="">3.5</option>
-					<option value ="">4</option>
-					<option value ="">4.5</option>
-					<option value ="">5</option>
-				</select>
-
+			<select name="point" class="select_box_style" id="select_box_point">
+				<option v-for="(value, key) in sel_items">
+					{{value}}
+				</option>
+			</select>
 			<br/>
-
 			<a id="input_guide_category">カテゴリ：</a>
-				<select name="Category" id="category_selectbox">
-					<option value="">アクション</option>
-					<option value="">アメコミ</option>
-					<option value="">アニメ</option>
-					<option value="">ミュージカル</option>
-					<option value="">ラブロマンス</option>
-					<option value="">ミステリー・心理</option>
-					<option value="">サスペンス</option>
-					<option value="">歴史</option>
-					<option value="">SF</option>
-					<option value="">犯罪(クライム)</option>
-					<option value="">ホラー・スリル</option>
-					<option value="">ファンタジー</option>
-					<option value="">コメディ</option>
-					<option value="">伝記</option>
-					<option value="">パニック</option>
-				</select>
+			<select name="Category" class="select_box_style" id="select_box_category">
+				<option v-for="(value, key) in sel_items">
+					{{value}}
+				</option>
+			</select>
 			</form>
 
 			<input type = "button" value = "追加" id="confirm_add_data_btn" onclick = "add_data()" /><br>
@@ -116,6 +111,7 @@ if(!isset($_SESSION["login_user"])){
 		</div>
 
 	</div>
+	<script type="text/javascript" src="./src/js/component_control.js"></script>
 	<script src="./src/js/add_movie.js"></script>
 </body>
 

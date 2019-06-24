@@ -36,9 +36,10 @@ function add_data(){
 	Json["title"] = document.add_movie_data.title.value;
 	Json["scrTime"] = document.add_movie_data.scrTime.value;
 	Json["date"] = document.add_movie_data.date.value;
-	Json["value"] = document.add_movie_data.value.value;
+	//Json["value"] = document.add_movie_data.value.value;
+	Json["value"] = value_text_control.text;
 
-	sel_idx = document.add_movie_data.Point.selectedIndex;
+	sel_idx = document.add_movie_data.point.selectedIndex;
 	Json["point"] = movie_point[sel_idx];
 
 	//カテゴリIDは1から割り振られている
@@ -69,6 +70,20 @@ function PUT_json(add_data){
 }
 
 //値段設定系
+function select_value_items(){
+	console.log("値段のセレクトボックス");
+	console.log("Vueのオブジェクトに書き換えさせる");
+}
+
+var value_text_control = new Vue({
+	el: "#value_textbox",
+	data:{
+		text: "0"
+	}
+});
+
+/*
+
 function TOHO_night(){
 	document.add_movie_data.value.value = TOHO_night_val;
 }
@@ -88,6 +103,7 @@ function TOHO_spend_point(){
 function TOHO_service(){
 	document.add_movie_data.value.value = TOHO_service_val;
 }
+*/
 
 //タイトル入力フォーム操作時
 function add_movie_title_form_on_select(){

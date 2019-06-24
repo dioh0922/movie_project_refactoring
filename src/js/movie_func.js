@@ -10,6 +10,7 @@ var svr_domain = "";	//アクセスするサーバ名称
 
 const MX4D_value = 3300;	//MX4D系の判断に使用
 
+/*
 const value_data = 	[	1300, 		//TOHOのレイト料金
 						1400,		//横浜ブルクのレイト料金
 						0,			//無料鑑賞
@@ -21,6 +22,17 @@ const value_data = 	[	1300, 		//TOHOのレイト料金
 						2200,		//IMAXの料金
 						9999		//未定義
 					];
+*/
+
+//結果表示操作オブジェクト
+var text_area_control = new Vue({
+	el: "#result_text_area",
+	data:{
+		text: [
+			"DBから結果表示"
+		]
+	}
+});
 
 //起動時の処理
 (window.onload = function(){

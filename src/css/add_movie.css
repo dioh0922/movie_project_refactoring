@@ -29,6 +29,14 @@ body{
 	background-color: #D0D0FF;
 }
 
+#select_box_value{
+	background-color: #D0D0FF;
+	width:	40%;
+	height:	25px;
+	border:	1px solid #000000;
+	border-radius:	50px;
+}
+
 /* タイトル入力欄の装飾 */
 #title_textbox{
 	background-color: #D0FFFF;
@@ -91,7 +99,7 @@ body{
 }
 
 /* 評価入力ボックスの装飾 */
-#point_selectbox{
+#select_box_point{
 	background-color:	#FFFF4D;
 	width:	40%;
 	height:	25px;
@@ -108,7 +116,7 @@ body{
 }
 
 /*  */
-#category_selectbox{
+#select_box_category{
 	width: 40%;
 	height: 25px;
 	border: 1px solid #000000;
@@ -180,4 +188,3 @@ body{
 		font-size: 0.5em;
 	}
 }
-
