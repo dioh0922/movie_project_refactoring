@@ -50,9 +50,7 @@ if(!isset($_SESSION["login_user"])){
 			<a id="input_guide_ScrTime">上映時間：</a><input type="number" id="ScrTime_textbox" name="scrTime" value="1"/><br>
 			<a id="input_guide_date">日時：</a><input type="date" id="date_textbox" name="date"><br>
 			<a id="input_guide_value">値段：</a>
-<!---			<input type="number" name="value" id="value_textbox" value="0"/><br>
 
---->
 			<input type="text" id="value_textbox" v-model="text"></br>
 			<select name = "movie_value" class="select_box_style"
 			id="select_box_value"
@@ -104,10 +102,6 @@ if(!isset($_SESSION["login_user"])){
 		</div>
 		<div id="button_padding">
 
-		</div>
-
-		<div id="alert_dialog">
-			<div id="alert_dlg_txt"> </div>
 		</div>
 
 	</div>

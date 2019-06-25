@@ -1,31 +1,10 @@
 
 var AddMovie = "";
 var sel_idx;
-var alert_text;
 const json_addr = "http://dioh09.php.xdomain.jp/MovieData.json";	//phpサーバ上のjson
 
 //アクセスするサーバ名称
 var svr_domain = "";
-
-const movie_point = [	'1',
-						'1.5',
-						'2',
-						'2.5',
-						'3',
-						'3.5',
-						'4',
-						'4.5',
-						'5'
-					];
-
-//値段設定定数
-
-const TOHO_night_val = 1300;
-const KINEZO_night_val = 1400;
-const normal_val = 1800;
-const TOHO_point_val = 0;
-const TOHO_service_val = 1100;
-const GuP_special_val= 1200;	//ガルパン最終章特別価格
 
 const LOGOUT_FLG_ON = 1;
 
@@ -36,11 +15,10 @@ function add_data(){
 	Json["title"] = document.add_movie_data.title.value;
 	Json["scrTime"] = document.add_movie_data.scrTime.value;
 	Json["date"] = document.add_movie_data.date.value;
-	//Json["value"] = document.add_movie_data.value.value;
 	Json["value"] = value_text_control.text;
 
 	sel_idx = document.add_movie_data.point.selectedIndex;
-	Json["point"] = movie_point[sel_idx];
+	Json["point"] = point_list[sel_idx];
 
 	//カテゴリIDは1から割り振られている
 	Json["cate"] = document.add_movie_data.Category.selectedIndex + 1;
@@ -69,41 +47,13 @@ function PUT_json(add_data){
 	});
 }
 
-//値段設定系
-function select_value_items(){
-	console.log("値段のセレクトボックス");
-	console.log("Vueのオブジェクトに書き換えさせる");
-}
-
+//値段入力欄
 var value_text_control = new Vue({
 	el: "#value_textbox",
 	data:{
 		text: "0"
 	}
 });
-
-/*
-
-function TOHO_night(){
-	document.add_movie_data.value.value = TOHO_night_val;
-}
-
-function KINEZO_night(){
-	document.add_movie_data.value.value = KINEZO_night_val;
-}
-
-function normal_value(){
-	document.add_movie_data.value.value = normal_val;
-}
-
-function TOHO_spend_point(){
-	document.add_movie_data.value.value = TOHO_point_val;
-}
-
-function TOHO_service(){
-	document.add_movie_data.value.value = TOHO_service_val;
-}
-*/
 
 //タイトル入力フォーム操作時
 function add_movie_title_form_on_select(){
@@ -130,8 +80,6 @@ function delete_data(){
 
 	let del_cnf;
 
-	//DelCnf = confirm("「" + str + "」を削除しますか?\n(同じ名前はすべて消えます。誤入力の修正用です。)");
-	//if(DelCnf){
 	del_cnf = confirm("「" + str + "」を削除しますか?\n(同じ名前はすべて消えます。誤入力の修正用です。)");
 	if(del_cnf){
 		$.ajax({
@@ -175,23 +123,12 @@ function logout_admin_user(){
 $(window).on("killed_session", goto_index_page);
 
 function goto_index_page(){
-		location.href = svr_domain + "/login_page.html";
+	location.href = svr_domain + "/login_page.html";
 }
 
 $(function(){
 
 	$("#login_failed").hide();
-	$("#alert_dialog").dialog({autoOpen: false});
-
-	$("#alert_dialog").dialog({
-		modal: true,
-		title: "アラート表示",
-		buttons:{
-			"閉じる":	function(){
-				$(this).dialog("close");
-			}
-		}
-	});
 
 });
 
@@ -207,10 +144,18 @@ function login_form_init_ID(){
 
 //アラートのダイアログを表示する
 function alert_dialog_open(err_str){
-	alert_text.innerHTML = err_str;
-	$("#alert_dialog").dialog("open");
+	var str = $("<div></div>").dialog({autoOpen: true});
+	str.html('<h2 id="calc_all_dialog">'+err_str+'</h2>');
+	str.dialog("option", {
+		title: "アラート表示",
+		buttons:	{
+			"閉じる":	function(){
+				$(this).dialog("close");
+			}
+		}
+	});
+	str.dialog("open");
 }
-
 
 //全データをjsonファイルに書き出す
 function all_data_save_json(){
@@ -220,7 +165,6 @@ function all_data_save_json(){
 
 (window.onload = function(){
 	//結果表示用のダイアログに結果(主に失敗)を表示できるようにする
-	alert_text = document.getElementById("alert_dlg_txt");
 	$.getJSON("/movie_project/src/setup.json", function(data){
 		svr_domain = data["domain"];
 	});
