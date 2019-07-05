@@ -18,15 +18,15 @@
 	$in_ID = $_POST["userID"];
 	$password = $_POST["pass"];
 
-	$query = sprintf("SELECT accept FROM login WHERE userID = \"%s\" AND pass = \"%s\"; ",
-						$in_ID,
-						$password);
+	$query = sprintf("SELECT accept, pass FROM login WHERE userID = \"%s\"; ",
+						$in_ID);
 
 	//クエリ実行して比較情報とる
 	$query_result = db_connect($query);
 	if($query_result){
 		$row = $query_result->fetch_assoc();
-		if($row["accept"] == "1"){
+		if( ($row["accept"] == "1")
+		&& password_verify($password, $row["pass"]) ){
 			$_SESSION["login_user"] = $in_ID;
 			print "success";
 		}else{
