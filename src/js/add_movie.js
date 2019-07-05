@@ -165,7 +165,7 @@ function all_data_save_json(){
 
 (window.onload = function(){
 	//結果表示用のダイアログに結果(主に失敗)を表示できるようにする
-	$.getJSON("/movie_project/src/setup.json", function(data){
+	$.getJSON("/movie_project/src/svr.json", function(data){
 		svr_domain = data["domain"];
 	});
 });

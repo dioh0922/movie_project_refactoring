@@ -23,7 +23,7 @@ var text_area_control = new Vue({
 //起動時の処理
 (window.onload = function(){
 	$("#page_top").hide();
-	$.getJSON("/movie_project/src/setup.json", function(data){
+	$.getJSON("/movie_project/src/svr.json", function(data){
 		svr_domain = data["domain"];
 	});
 });

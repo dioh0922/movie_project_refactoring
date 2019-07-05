@@ -155,7 +155,7 @@ $(window).on("ready_display", graph_display);
 
 //起動時の処理
 (window.onload = function(){
-	$.getJSON("/movie_project/src/setup.json", function(data){
+	$.getJSON("/movie_project/src/svr.json", function(data){
 		svr_domain = data["domain"];
 		get_category_data();
 		get_category_table();

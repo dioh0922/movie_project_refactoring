@@ -42,7 +42,7 @@ function login_form_init_ID(){
 }
 
 (window.onload = function(){
-	$.getJSON("/movie_project/src/setup.json", function(data){
+	$.getJSON("/movie_project/src/svr.json", function(data){
 		svr_domain = data["domain"];
 	});
 });
