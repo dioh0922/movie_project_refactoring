@@ -51,7 +51,7 @@ function PUT_json(add_data){
 var value_text_control = new Vue({
 	el: "#value_textbox",
 	data:{
-		text: "0"
+		text: "1300"
 	}
 });
 
