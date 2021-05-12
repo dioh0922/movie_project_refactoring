@@ -3,9 +3,6 @@ var AddMovie = "";
 var sel_idx;
 const json_addr = "http://dioh09.php.xdomain.jp/MovieData.json";	//phpサーバ上のjson
 
-//アクセスするサーバ名称
-var svr_domain = "";
-
 const LOGOUT_FLG_ON = 1;
 
 function add_data(){
@@ -35,7 +32,7 @@ function add_data(){
 function PUT_json(add_data){
 	$.ajax({
 		type:"POST",
-		url:svr_domain + "/src/php/add_movie_data.php",
+		url:"./src/php/add_movie_data.php",
 		cacha:false,
 		data: add_data
 	})
@@ -84,7 +81,7 @@ function delete_data(){
 	if(del_cnf){
 		$.ajax({
 			type:"POST",
-			url:svr_domain + "/src/php/delete_data.php",
+			url:"./src/php/delete_data.php",
 			cacha:false,
 			data:query
 		})
@@ -106,7 +103,7 @@ function logout_admin_user(){
 
 	$.ajax({
 		type: "POST",
-		url: svr_domain + "/src/php/Login.php",
+		url: "./src/php/Login.php",
 		cacha: false,
 		data: logout_data
 	})
@@ -123,7 +120,7 @@ function logout_admin_user(){
 $(window).on("killed_session", goto_index_page);
 
 function goto_index_page(){
-	location.href = svr_domain + "/login_page.html";
+	location.href = "./login_page.html";
 }
 
 $(function(){
@@ -160,12 +157,8 @@ function alert_dialog_open(err_str){
 //全データをjsonファイルに書き出す
 function all_data_save_json(){
 	//直接phpからファイルを書き出させてDLする
-	window.location.href = svr_domain + "/src/php/all_data_save_json.php";
+	window.location.href = "./src/php/all_data_save_json.php";
 }
 
 (window.onload = function(){
-	//結果表示用のダイアログに結果(主に失敗)を表示できるようにする
-	$.getJSON("/movie_project/src/svr.json", function(data){
-		svr_domain = data["domain"];
-	});
 });

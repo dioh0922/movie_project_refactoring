@@ -4,9 +4,6 @@ var sel_idx;
 var alert_text;
 const json_addr = "http://dioh09.php.xdomain.jp/MovieData.json";	//phpサーバ上のjson
 
-//アクセスするサーバ名称
-var svr_domain = "";
-
 function try_login(){
 	var user_data = {};
 	user_data["userID"] = document.login_form.userId.value;
@@ -16,14 +13,14 @@ function try_login(){
 
 	$.ajax({
 		type:"POST",
-		url:svr_domain + "/src/php/Login.php",
+		url:"./src/php/Login.php",
 		cacha:false,
 		data: user_data
 	})
 	.done(function(ajax_data){
 		let Result = ajax_data;
 		if(Result == "success"){
-			location.href = svr_domain + "/add_movie.php";
+			location.href = "./add_movie.php";
 		}
 	})
 	.fail(function(ajax_data){
@@ -42,7 +39,5 @@ function login_form_init_ID(){
 }
 
 (window.onload = function(){
-	$.getJSON("/movie_project/src/svr.json", function(data){
-		svr_domain = data["domain"];
-	});
+
 });

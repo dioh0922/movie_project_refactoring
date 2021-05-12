@@ -46,7 +46,7 @@ if(!isset($_SESSION["login_user"])){
 
 		<div class="input_data_layout">
 			<form name="add_movie_data" >
-			<a id="input_guide_title">タイトル名：</a><input type="text" name="title" id="title_textbox" value="タイトルを入力" onclick="add_movie_title_form_on_select()"/><br>
+			<a id="input_guide_title">タイトル名：</a><input type="text" name="title" id="title_textbox" placeholder="タイトルを入力" onclick="add_movie_title_form_on_select()"/><br>
 			<a id="input_guide_ScrTime">上映時間：</a><input type="number" id="ScrTime_textbox" name="scrTime" value="1"/><br>
 			<a id="input_guide_date">日時：</a><input type="date" id="date_textbox" name="date"><br>
 			<a id="input_guide_value">値段：</a>
@@ -92,7 +92,7 @@ if(!isset($_SESSION["login_user"])){
 
 			<div class="admin_form">
 				<form name = "Delete">
-					<input type = "text" name = "delete_title" value = "削除タイトルを入力"/>
+					<input type = "text" name = "delete_title" placeholder = "削除タイトルを入力"/>
 					<input type = "button" class="admin_btn" value = "タイトルで削除" onclick="delete_data()"/><br>
 				</form>
 				<input type="button" name="all_data_save" class="admin_btn" value="全データjson化" onclick="all_data_save_json()"/><br>

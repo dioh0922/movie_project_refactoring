@@ -8,9 +8,6 @@ var category_label = [];
 //平均値データ
 var avg_point_arr = [];
 
-
-//アクセスするサーバ名称
-var svr_domain = "";
 //グラフ表示処理
 function graph_display(){
 
@@ -84,7 +81,7 @@ function graph_display(){
 function get_category_data(){
 	$.ajax({
 		type: "GET",
-		url: svr_domain + "/src/php/category_array.php",
+		url: "./src/php/category_array.php",
 		cacha: false
 	})
 	.done(function(ajaxDat){
@@ -103,7 +100,7 @@ function get_category_data(){
 function get_category_table(){
 	$.ajax({
 		type: "GET",
-		url: svr_domain + "/src/php/get_category_table.php",
+		url: "./src/php/get_category_table.php",
 		cacha: false
 	})
 	.done(function(ajaxDat){
@@ -122,7 +119,7 @@ function get_category_table(){
 function get_avg_point(){
 	$.ajax({
 		type: "GET",
-		url: svr_domain + "/src/php/get_avg_point.php",
+		url: "./src/php/get_avg_point.php",
 		cacha: false
 	})
 	.done(function(ajaxDat){
@@ -155,10 +152,7 @@ $(window).on("ready_display", graph_display);
 
 //起動時の処理
 (window.onload = function(){
-	$.getJSON("/movie_project/src/svr.json", function(data){
-		svr_domain = data["domain"];
-		get_category_data();
-		get_category_table();
-		get_avg_point();
-	});
+	get_category_data();
+	get_category_table();
+	get_avg_point();
 });
