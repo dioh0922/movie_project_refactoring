@@ -6,8 +6,6 @@ var special = "";
 
 var movie_data;
 
-var svr_domain = "";	//アクセスするサーバ名称
-
 const MX4D_value = 3300;	//MX4D系の判断に使用
 
 //結果表示操作オブジェクト
@@ -23,9 +21,6 @@ var text_area_control = new Vue({
 //起動時の処理
 (window.onload = function(){
 	$("#page_top").hide();
-	$.getJSON("/movie_project/src/svr.json", function(data){
-		svr_domain = data["domain"];
-	});
 });
 
 $(function(){
@@ -54,7 +49,7 @@ function sort_point(){
 	send_data["kind"] = "Point";
 	send_data["point"] = point_select_control.sel_items[idx];
 
-	let disp_PHP = svr_domain + "/src/php/show_detail.php";
+	let disp_PHP = "./src/php/show_detail.php";
 
 	//クエリ文字列と対象URLを渡して関数でPOSTする
 	POST_query(send_data, disp_PHP);
@@ -69,7 +64,7 @@ function total_calc(){
 
 	$.ajax({
 		type:"GET",
-		url:svr_domain + "/src/php/calc_total.php",
+		url:"./src/php/calc_total.php",
 		cacha:false,
 	})
 	.done(function(get_data){
@@ -97,7 +92,7 @@ function total_calc(){
 //10件を日付の新しい順に表示する
 //「最新１０個」
 function recently_movie_check(){
-	let dist_PHP = svr_domain + "/src/php/recently_10Movie.php";
+	let dist_PHP = "./src/php/recently_10Movie.php";
 	request_PHP_result(dist_PHP);
 }
 
@@ -107,7 +102,7 @@ function search_value(){
 	let str = "";
 	let idx;
 	idx = document.input_data.movie_value.selectedIndex;	//選択中の値段のインデックス取得
-	let dist_PHP = svr_domain + "/src/php/show_detail.php";
+	let dist_PHP = "./src/php/show_detail.php";
 
 	//選択した値段と一致するもの取得
 
@@ -127,7 +122,7 @@ function search_value(){
 //データ全体表示
 //「全部」
 function show_all(){
-	let dist_PHP = svr_domain + "/src/php/show_all_movie.php";
+	let dist_PHP = "./src/php/show_all_movie.php";
 
 	request_PHP_result(dist_PHP);
 }
@@ -136,7 +131,7 @@ function show_all(){
 //「最後に見たもの」
 function last_data(){
 	//titleをdateの最大1つまで表示する -> 最新の映画を表示
-	let dist_PHP = svr_domain + "/src/php/show_detail.php";
+	let dist_PHP = "./src/php/show_detail.php";
 	let kind = "kind=LastData";
 
 	//引き出す内容種別と対象URLを渡して関数でPOSTする
@@ -180,7 +175,7 @@ function POST_query(query_str, url){
 
 //カテゴリ別に抽出する
 function sort_category(){
-	let dist_PHP = svr_domain + "/src/php/show_detail.php";
+	let dist_PHP = "./src/php/show_detail.php";
 
 	//選択した値段と一致するもの取得
 	let send_data = {};
