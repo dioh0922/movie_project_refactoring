@@ -1,4 +1,5 @@
 
+// TODO: APIから取得
 const category_list = [
 				"アクション",
 				"アメコミ",
@@ -14,7 +15,8 @@ const category_list = [
 				"ファンタジー",
 				"コメディ",
 				"伝記",
-				"パニック"
+				"パニック",
+				"インド映画"
 			];
 
 const point_list = [
