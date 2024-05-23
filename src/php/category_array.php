@@ -8,7 +8,8 @@
 
 	$str = "";
 
-	for($i = 1; $i <= 15; $i++){
+	// TODO: category_tableからID拾うように
+	for($i = 1; $i <= 16; $i++){
 		$query = sprintf("SELECT COUNT(title) FROM moviedata WHERE category=%d", $i);
 
 		$query_result = db_connect($query);
