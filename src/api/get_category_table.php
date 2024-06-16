@@ -1,11 +1,12 @@
 <?php
+	header('Access-Control-Allow-Origin: *');
+	header('Content-Type: application/json');
+	
 	require "database_connect.php";
 	
 	mb_language("ja");
 	mb_internal_encoding("UTF-8");
 	
-	header('Access-Control-Allow-Origin: *');
-
 	$result = ["result" => 0, "category" => []];
 
 	//各カテゴリの名称をとっていく
