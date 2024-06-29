@@ -3,23 +3,19 @@
 	header('Content-Type: application/json');
 
 	require "database_connect.php";
-	
-	mb_language("ja");
-	mb_internal_encoding("UTF-8");
+	db_init();
 
 	$result = ["result" => 0, "list" => []];
 
-	$query = "SELECT title,date,point FROM moviedata;";
+	$list = ORM::for_table("moviedata")
+	->select("title")
+	->find_many();
 	
-	$query_result = db_connect($query);
-	if($query_result){
-		$result["result"] = 1;
-		$list = [];
-		while($row = $query_result->fetch_assoc() ){
-			$list[] = $row;
-		}
-		$result["result"] = $list;			
-
+	$data = [];
+	foreach($list as $idx => $key){
+		$data[] = ["title" => $key->title];
 	}
+	$result = $data;
+
 	echo json_encode($result, JSON_UNESCAPED_UNICODE);	
 ?>

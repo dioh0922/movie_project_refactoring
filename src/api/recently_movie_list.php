@@ -1,23 +1,22 @@
 <?php
 	header('Access-Control-Allow-Origin: *');
 	require "database_connect.php";
+	db_init();
 	
-	mb_language("ja");
-	mb_internal_encoding("UTF-8");
-	
-	//日時で最後から10個を抜く、クエリはPHP内で生成
-	$query = "SELECT title,date,point FROM moviedata ORDER BY date DESC LIMIT 10";
-	
-	$res = array();
-	
-	$query_result = db_connect($query);
-	if($query_result){
-		while($row = $query_result->fetch_assoc() ){
-			//HTMLで表示するため<br>で改行
-			$res[] = $row;
-		}
-	}
+	$result = ["result" => 0, "list" => []];
 
-	echo json_encode($res, JSON_UNESCAPED_UNICODE)		
+	$list = ORM::for_table("moviedata")
+	->select("title")
+	->order_by_desc("date")
+	->limit(10)
+	->find_many();
+	
+	$data = [];
+	foreach($list as $idx => $key){
+		$data[] = ["title" => $key->title];
+	}
+	$result = $data;
+
+	echo json_encode($result, JSON_UNESCAPED_UNICODE)		
 
 ?>
