@@ -3,25 +3,19 @@
 	header('Content-Type: application/json');
 	
 	require "database_connect.php";
-	
-	mb_language("ja");
-	mb_internal_encoding("UTF-8");
-	
+	db_init();	
+
 	$result = ["result" => 0, "category" => []];
 
-	//各カテゴリの名称をとっていく
-	$query = "SELECT category_name FROM category_table;";
-	$str = "";
+	$list = ORM::for_table("category_table")
+	->select_many("category_name", "id")
+	->find_many();
 	
-	$query_result = db_connect($query);
-	if($query_result){
-		$result["result"] = 1;
-		while($row = $query_result->fetch_assoc()){
-			$result["category"][] = $row["category_name"];
-		}
-	}else{
-		$result["result"] = -1;
+	$data = [];
+	foreach($list as $idx => $key){
+		$data[] = ["category" => $key->id, "label"=> $key->category_name];
 	}
-	
-	echo json_encode($result, JSON_UNESCAPED_UNICODE);
+	$result["category"] = $data;
+
+	echo json_encode($result, JSON_UNESCAPED_UNICODE)		
 ?>
