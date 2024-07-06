@@ -17,7 +17,7 @@
 		->select("title")
 		->order_by_desc("date")
 		->find_one();
-		$list[] = ["title" => $title->title];
+		$list[] = $title;
 	}else if($kind !== null && strcmp($kind, "Value") == 0){
 		//価格別として選択した値段がPOSTされる
 		$list = ORM::for_table("moviedata")
@@ -50,7 +50,7 @@
 
 	$data = [];
 	foreach($list as $idx => $key){
-		$data[] = $key;
+		$data[] = ["title" => $key->title];
 	}
 	$result = $data;
 
