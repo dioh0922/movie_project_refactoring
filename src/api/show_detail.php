@@ -19,28 +19,26 @@
 		->find_one();
 		$list[] = $title;
 	}else if($kind !== null && strcmp($kind, "Value") == 0){
-		//価格別として選択した値段がPOSTされる
 		$list = ORM::for_table("moviedata")
 		->select("title")
 		->where("value", $array["value"])
 		->find_many();
 	}else if($kind !== null && strcmp($kind, "Value_MX4D") == 0){
-		//価格別でもMX4Dだけ一致ではなく値段以上のデータを探す
 		$list = ORM::for_table("moviedata")
 		->select("title")
 		->where_gte("value", $array["value"])
 		->find_many();
 	}else if($kind !== null && strcmp($kind, "Point") == 0){
-		//重複削除で評価度と一致するもの取得
 		$list = ORM::for_table("moviedata")
 		->select("title")
 		->where("point", $array["point"])
+		->groupBy("title")
 		->find_many();
 	}else if($kind !== null && strcmp($kind, "Category") == 0){
-		//重複削除で指定したカテゴリIDのデータを探す
 		$list = ORM::for_table("moviedata")
 		->select("title")
 		->where("category", $array["value"])
+		->groupBy("title")
 		->find_many();
 	}else{
 		//一致する抽出区分がない (JavaScript側が正しく設定してきていない)
